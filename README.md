@@ -1,16 +1,26 @@
-# coffe_app
+# Flutter coffe_app
 
-A new Flutter project.
+This is a **practice project** built with **Flutter**.  
+The main goal of this app is to **improve my skills** in:
 
-## Getting Started
+- Displaying products in a clean and organized way
+- Implementing smooth **animations** and transitions
+- Experimenting with Flutter UI and layout techniques
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Product listing screen
+- Animated product cards
+- Interactive UI elements
+- Modern and responsive design
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Purpose
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This app is not intended for production.  
+It is a **learning project** to practice Flutter development, animations, and UI design.
+
+## Tools & Technologies
+
+- Flutter
+- Dart
+- Material Design
