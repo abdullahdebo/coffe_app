@@ -13,7 +13,6 @@ class _DrinkDetailsState extends State<DrinkDetails> {
     viewportFraction: 0.5,
   );
   double _currentPage = 0;
-
   @override
   void initState() {
     _controller.addListener(() {
@@ -24,6 +23,10 @@ class _DrinkDetailsState extends State<DrinkDetails> {
     super.initState();
   }
 
+  /// Logic
+  int selectedIndex = 0;
+
+  /// Model Accses
   final drinks = DrinkModel.drinks;
 
   @override
@@ -116,6 +119,47 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                 ),
               );
             },
+          ),
+
+          /// Multi Selection
+          Positioned(
+            bottom: 100,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ...List.generate(4, (index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: selectedIndex == index
+                            ? Colors.orange
+                            : Colors.white,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: selectedIndex == index
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.align_vertical_center_sharp,
+                        color: selectedIndex == index
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+                    ),
+                  );
+                }),
+              ],
+            ),
           ),
         ],
       ),
