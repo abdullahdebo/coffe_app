@@ -1,3 +1,5 @@
+import 'package:coffe_app/components/quantity_widget.dart';
+import 'package:coffe_app/components/toggle_widget.dart';
 import 'package:coffe_app/model.dart';
 import 'package:flutter/material.dart';
 
@@ -96,21 +98,7 @@ class _DrinkDetailsState extends State<DrinkDetails> {
                             bottom: 190,
                             right: 0,
                             left: 0,
-                            child: Container(
-                              width: 70,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.circular(100),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black87,
-                                    blurRadius: 80,
-                                    spreadRadius: 14,
-                                  ),
-                                ],
-                              ),
-                            ),
+                            child: Container(),
                           ),
                         ],
                       ),
@@ -124,43 +112,67 @@ class _DrinkDetailsState extends State<DrinkDetails> {
           /// Multi Selection
           Positioned(
             bottom: 100,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            left: 7,
+            right: 7,
+            child: Column(
               children: [
-                ...List.generate(4, (index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = index;
-                      });
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: selectedIndex == index
-                            ? Colors.orange
-                            : Colors.white,
-                        shape: BoxShape.circle,
-                        border: Border.all(
+                Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceAround,
+                  children: List.generate(3, (index) {
+                    final labels = ["S", "M", "L"];
+
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        padding: EdgeInsets.all(14),
+                        decoration: BoxDecoration(
                           color: selectedIndex == index
-                              ? Colors.black
+                              ? Colors.orange
                               : Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: selectedIndex == index
+                                ? Colors.grey
+                                : Colors.grey.shade400,
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            labels[index],
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: selectedIndex == index
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
                         ),
                       ),
-                      child: Icon(
-                        Icons.align_vertical_center_sharp,
-                        color: selectedIndex == index
-                            ? Colors.white
-                            : Colors.black,
-                      ),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+                ),
+                SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(child: ToggleWidget()),
+                    SizedBox(width: 30),
+                    Expanded(child: QuantityWidget()),
+                  ],
+                ),
               ],
             ),
           ),
+
+          /// switcher
         ],
       ),
     );
